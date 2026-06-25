@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Ti ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(
+        -45deg,
+        #ff758c,
+        #ff7eb3,
+        #ffd1dc,
+        #ffe6ee
+    );
+    background-size:400% 400%;
+    animation:fondo 15s ease infinite;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:25px;
+    position:relative;
+}
+
+@keyframes fondo{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* Corazones de fondo */
+
+.heart-bg{
+    position:fixed;
+    bottom:-50px;
+    color:rgba(255,255,255,.45);
+    animation:float linear forwards;
+    pointer-events:none;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+    10%{
+        opacity:1;
+    }
+    to{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* Carta */
+
+.card{
+    width:100%;
+    max-width:800px;
+
+    background:rgba(255,255,255,0.18);
+    backdrop-filter:blur(16px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:30px;
+
+    padding:30px;
+
+    text-align:center;
+
+    color:white;
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,.15);
+}
+
+.titulo{
+    font-family:'Dancing Script',cursive;
+    font-size:4rem;
+    margin-bottom:10px;
+}
+
+.sub{
+    opacity:.9;
+    margin-bottom:25px;
+}
+
+/* Imagen */
+
+.foto{
+    width:100%;
+    border-radius:25px;
+    overflow:hidden;
+    margin-bottom:25px;
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+.foto img{
+    width:100%;
+    display:block;
+}
+
+.mensaje{
+    font-size:1.1rem;
+    line-height:1.9;
+    text-align:left;
+    background:rgba(255,255,255,.12);
+    padding:25px;
+    border-radius:20px;
+}
+
+.mensaje p{
+    margin-bottom:15px;
+}
+
+/* Botón */
+
+button{
+    margin-top:30px;
+
+    border:none;
+
+    padding:16px 35px;
+
+    border-radius:50px;
+
+    background:white;
+
+    color:#ff4f8b;
+
+    font-size:1.1rem;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-3px) scale(1.05);
+}
+
+#respuesta{
+    margin-top:25px;
+    font-size:2rem;
+    font-weight:bold;
+
+    opacity:0;
+    transform:translateY(20px);
+
+    transition:.7s;
+}
+
+#respuesta.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.love-rain{
+    position:fixed;
+    top:-50px;
+    pointer-events:none;
+    animation:rain linear forwards;
+}
+
+@keyframes rain{
+    from{
+        transform:translateY(-50px);
+        opacity:1;
+    }
+    to{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
+
+@media(max-width:600px){
+
+    .titulo{
+        font-size:3rem;
+    }
+
+    .mensaje{
+        font-size:1rem;
+    }
+
+    #respuesta{
+        font-size:1.5rem;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="card">
+
+    <h1 class="titulo">Para Ti ❤️</h1>
+
+    <p class="sub">
+        Porque hay algo que quiero dejar muy claro...
+    </p>
+
+    <div class="foto">
+        <img src="nosotros.jpg" alt="Nosotros">
+    </div>
+
+    <div class="mensaje">
+
+        <p>
+            Mi amor:
+        </p>
+
+        <p>
+            A veces dices, medio en broma y medio en serio,
+            que sientes que te odio.
+        </p>
+
+        <p>
+            Y aunque sé que lo dices jugando,
+            quería hacer esta pequeña página para recordarte algo:
+            jamás podría odiarte.
+        </p>
+
+        <p>
+            Eres una de las personas más importantes de mi vida.
+            Me encanta tu sonrisa, tus ocurrencias,
+            la forma en la que me haces reír y todos esos pequeños detalles
+            que hacen que cada día contigo sea especial.
+        </p>
+
+        <p>
+            Tal vez no siempre encuentro las palabras perfectas,
+            pero si alguna vez dudas de lo que siento,
+            recuerda esto:
+        </p>
+
+        <p>
+            Te quiero muchísimo ❤️
+        </p>
+
+    </div>
+
+    <button onclick="mostrarRespuesta()">
+        ¿Me odia?
+    </button>
+
+    <div id="respuesta">
+        ❤️ No, te quiere mucho ❤️
+    </div>
+
+</div>
+
+<script>
+
+const respuesta = document.getElementById("respuesta");
+
+function mostrarRespuesta(){
+
+    respuesta.classList.add("show");
+
+    for(let i=0;i<120;i++){
+
+        setTimeout(()=>{
+            lluviaCorazones();
+        },i*25);
+
+    }
+
+}
+
+function lluviaCorazones(){
+
+    const heart=document.createElement("div");
+
+    heart.className="love-rain";
+    heart.innerHTML="❤️";
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(15+Math.random()*35)+"px";
+    heart.style.animationDuration=(3+Math.random()*3)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+
+}
+
+/* corazones flotando siempre */
+
+function corazonFondo(){
+
+    const heart=document.createElement("div");
+
+    heart.className="heart-bg";
+    heart.innerHTML="❤";
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(15+Math.random()*25)+"px";
+    heart.style.animationDuration=(8+Math.random()*8)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },16000);
+
+}
+
+setInterval(corazonFondo,500);
+
+</script>
+
+</body>
+</html>
